@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,11 +13,12 @@ public class PlayerController : MonoBehaviour
     private float force = 5f;
     //private bool hasPowerup = false;
     private float powerupStrength = 15f;
-
     private PowerupType currentPowerup = PowerupType.Smash;
     public GameObject rocketPrefab;
     private GameObject tmpRocket;
     private Coroutine powerupCountdown;
+
+    
 
     private float hangTime = 1f;
     private float smashSpeed = 5f;
@@ -33,6 +35,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -5)
+        {
+            gameObject.SetActive(false);
+        }
+
         if (currentPowerup == PowerupType.Rockets && Input.GetKeyDown(KeyCode.Space))
         {
             LaunchRockets();
@@ -91,7 +98,6 @@ public class PlayerController : MonoBehaviour
         {
             tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
             tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
-
         }
     }
 

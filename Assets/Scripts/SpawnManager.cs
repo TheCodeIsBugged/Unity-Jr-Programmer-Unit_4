@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
     public GameObject[] powerupPrefabs;
+    public TextMeshProUGUI waveText;
     private GameObject boss;
     private float spawnRange = 9f;
     private int enemyCount;
@@ -14,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        waveNumber = 1;
     }
 
     // Update is called once per frame
@@ -25,17 +27,20 @@ public class SpawnManager : MonoBehaviour
 
         if (enemyCount == 0)
         {
-            waveNumber++;
-            SpawnPowerup();
             if (waveNumber % bossRound == 0 && boss == null)
             {
+                SetWaveText(waveNumber);
                 SpawnEnemyWave(waveNumber);
                 SpawnBoss();
             }
             else
             {
+                SetWaveText(waveNumber);
                 SpawnEnemyWave(waveNumber);
             }
+
+            waveNumber++;
+            SpawnPowerup();
         }
     }
 
@@ -68,5 +73,10 @@ public class SpawnManager : MonoBehaviour
     void SpawnBoss()
     {
         Instantiate(enemyPrefabs[enemyPrefabs.Length - 1], GenerateSpawsPosition(), enemyPrefabs[enemyPrefabs.Length - 1].transform.rotation);
+    }
+
+    void SetWaveText(int waveCount)
+    {
+        waveText.text = $"WAVE {waveCount}";
     }
 }

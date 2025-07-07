@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/Core/Documents/GitHub/Prototype-4/WebGL Builds/Build V1;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/Core/Documents/GitHub/Unity-Jr-Programmer-Unit_4/WebGL Builds/Sumo Roll V3;C:/Users/Core/Documents/GitHub/Unity-Jr-Programmer-Unit_4/WebGL Builds/Sumo Roll V2;C:/Users/Core/Documents/GitHub/Prototype-4/WebGL Builds/Build V1;;;;;;;\"}"
             }
         ]
     }
